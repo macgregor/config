@@ -1,5 +1,6 @@
 - name: install powerline
-  pip: name=git+git://github.com/Lokaltog/powerline#egg=Powerline
+  pip: name=git+git://github.com/Lokaltog/powerline#egg=Powerline state=present extra_args="--user -I -b ."
+  become: "{{user}}"
 
 - name: create font directory
   file: path={{user_home}}/.fonts state=directory
