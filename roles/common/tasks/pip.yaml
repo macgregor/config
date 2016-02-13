@@ -5,5 +5,4 @@
   pip:
     name: virtualenv
     state: latest
-  sudo: yes
 
