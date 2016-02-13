@@ -2,3 +2,4 @@
 - include: pip.yaml
 - include: powerline.yaml
 - include: user_configs.yaml
+- include: guake.yaml

@@ -1,0 +1,5 @@
+- name: install quake
+  package: name=guake state=latest
+
+- name: create autostart shell script
+  copy: src=roles/common/files/guake.desktop dest={{user_home}}/.config/autostart

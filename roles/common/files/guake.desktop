@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Guake
+Exec=/usr/bin/guake
+Terminal=false
+OnlyShowIn=GNOME;
