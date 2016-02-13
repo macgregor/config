@@ -1,0 +1,11 @@
+- name: install powerline
+  pip: name=git+git://github.com/Lokaltog/powerline
+
+- name: download powerline fonts
+  get_url: url=https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf dest=~/.fonts/
+
+- name: download powerline font conf
+  get_url: url=https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf dest=~/.config/fontconfig/conf.d/
+
+- name: rebuild font cache
+  shell: fc-cache -vf ~/.fonts

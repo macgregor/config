@@ -1,0 +1,8 @@
+- name: copy bash_profile
+  copy: src=roles/common/files/bash_profile dest=~/.bash_profile
+
+- name: copy bashrc
+  copy: src=/roles/common/files/bashrc dest=~/.bashrc
+
+- name: copy vimrc
+  copy: src=/roles/common/files/vimrc dev=~/.vimrc

@@ -1,0 +1,9 @@
+- name: install the latest version of pip
+  package: name=python-pip state=latest
+
+- name: install virtualenv
+  pip:
+    name: virtualenv
+    state: latest
+  sudo: yes
+
