@@ -1,8 +1,8 @@
 - name: copy bash_profile
-  copy: src=roles/common/files/bash_profile dest=~/.bash_profile
+  copy: src=roles/common/files/bash_profile dest={{user_home}}/.bash_profile
 
 - name: copy bashrc
-  copy: src=/roles/common/files/bashrc dest=~/.bashrc
+  copy: src=roles/common/files/bashrc dest={{user_home}}/.bashrc
 
 - name: copy vimrc
-  copy: src=/roles/common/files/vimrc dev=~/.vimrc
+  copy: src=roles/common/files/vimrc dest={{user_home}}/.vimrc
