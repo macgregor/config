@@ -1,0 +1,11 @@
+[user]
+	name = {{ user_name }}
+    email = {{ user_email }}
+[push]
+	default = simple
+[merge]
+	log = 1000000000
+[diff]
+	tool = meld
+[core]
+	attributesfile = ~/.gitattributes

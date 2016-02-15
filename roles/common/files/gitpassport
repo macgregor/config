@@ -1,0 +1,18 @@
+[general]
+enable_hook = True
+sleep_duration = 0.5
+
+[passport 0]
+email = mstratto@redhat.com.com
+name = Matthew Stratton
+service = gitolite.corp.redhat.com
+
+[passport 1]
+email = mstratto@redhat.com
+name = Matthew Stratton
+service = github.com
+
+[passport 2]
+email = development@mmstratton.com
+name = Matthew Stratton
+service = github.com

@@ -1,0 +1,33 @@
+- name: ensure git hook dir exists
+  file: path="{{user_home}}/.git/hooks/bin" state=directory
+
+- name: clone gitpassport
+  git: repo=https://github.com/frace/git-passport.git dest="{{user_home}}/.git/hooks/bin/git-passport" version=master update=no 
+
+- name: chmod execute gitpassport
+  file: path="{{user_home}}/.git/hooks/bin/git-passport/git-passport.py" mode="u=rwx,g=rx,o=rx" state=file
+
+- name: ensure pre-commit.d hook directory exists
+  file: path="{{user_home}}/.git/hooks/pre-commit.d" state=directory
+
+- name: ensure pre-commit hook for gitpassport exists
+  file: src="{{user_home}}/.git/hooks/bin/git-passport/git-passport.py" dest="{{user_home}}/.git/hooks/pre-commit.d/00-git-passport" state=link
+
+- name: ensure hook template dir exists
+  file: path="{{user_home}}/.git/templates/hooks" state=directory
+
+- name: copy precommit hook
+  copy: src=./roles/common/scripts/pre-commit dest="{{user_home}}/.git/templates/hooks/pre-commit" mode="u=rwx,g=rx,o=rx"
+
+- name: add passport alias to gitconfig
+  blockinfile:
+    dest: "{{user_home}}/.gitconfig"
+    insertbefore: BOF
+    block: |
+      [alias]
+          passport = !${HOME}/.git/hooks/bin/git-passport/git-passport.py
+      [init]
+          templatedir = ~/.git/templates
+
+- name: copy gitpassport config
+  copy: src=./roles/common/files/gitpassport dest="{{user_home}}/.gitpassport"
