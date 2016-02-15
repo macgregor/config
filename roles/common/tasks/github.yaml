@@ -1,0 +1,4 @@
+- name: Upload ssh key to github
+  command: roles/common/files/upload_pub_key.sh "{{user}}" 
+  register: results
+  fail: msg=

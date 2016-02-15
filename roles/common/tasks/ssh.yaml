@@ -1,0 +1,2 @@
+- name: Generating RSA key for {{user}}
+  user: name="{{user}}" generate_ssh_key=yes

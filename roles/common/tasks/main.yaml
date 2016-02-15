@@ -1,5 +1,6 @@
+- include: user_configs.yaml
 - include: base.yaml
 - include: pip.yaml
 - include: powerline.yaml
-- include: user_configs.yaml
 - include: guake.yaml
+- include: ssh.yaml

@@ -1,18 +1,14 @@
 - name: install powerline
-  pip: name=git+git://github.com/Lokaltog/powerline#egg=Powerline state=present extra_args="--user -I -b ."
-  become: "{{user}}"
+  package: name=powerline
 
-- name: create font directory
-  file: path={{user_home}}/.fonts state=directory
+- name: update bashrc
+  blockinfile:
+    dest: "{{user_home}}/.bashrc"
+    block: |
+      if [ -f `which powerline-daemon` ]; then
+        powerline-daemon -q
+        POWERLINE_BASH_CONTINUATION=1
+        POWERLINE_BASH_SELECT=1
+        . /usr/share/powerline/bash/powerline.sh
+      fi
 
-- name: download powerline fonts
-  get_url: url=https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf dest={{user_home}}/.fonts/
-
-- name: create font config directory
-  file: path={{user_home}}/.config/fontconfig/conf.d state=directory
-
-- name: download powerline font conf
-  get_url: url=https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf dest={{user_home}}/.config/fontconfig/conf.d/
-
-- name: rebuild font cache
-  shell: fc-cache -vf {{user_home}}/.fonts
