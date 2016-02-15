@@ -12,3 +12,5 @@
         . /usr/share/powerline/bash/powerline.sh
       fi
 
+- name: configure powerline shell
+  copy: src=roles/common/tasks/powerline_shell_config.json dest="{{user_home}}/.config/powerline/themes/shell/default.json
