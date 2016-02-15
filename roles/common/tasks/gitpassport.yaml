@@ -2,7 +2,7 @@
   file: path="{{user_home}}/.git/hooks/bin" state=directory
 
 - name: clone gitpassport
-  git: repo=https://github.com/frace/git-passport.git dest="{{user_home}}/.git/hooks/bin/git-passport" version=master update=no 
+  git: repo=https://github.com/cfi/git-passport.git dest="{{user_home}}/.git/hooks/bin/git-passport" version=merged_regex_noremote 
 
 - name: chmod execute gitpassport
   file: path="{{user_home}}/.git/hooks/bin/git-passport/git-passport.py" mode="u=rwx,g=rx,o=rx" state=file
