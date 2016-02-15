@@ -4,3 +4,4 @@
 - include: powerline.yaml
 - include: guake.yaml
 - include: ssh.yaml
+- include: gitpassport.yaml
