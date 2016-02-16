@@ -1,2 +1,5 @@
 - name: install git
   package: name=git state=latest
+
+- name: install vim-enhanced
+  package: name=vim-enhanced state=latest
