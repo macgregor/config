@@ -52,11 +52,10 @@ java6(){
 }
 
 # User specific aliases and functions
-alias build="mvn clean install -DskipTests"
-alias test="mvn test -fae"
+#alias build="mvn clean install -DskipTests"
+#alias test="mvn test -fae"
 alias bat='pygmentize -g'
 alias ci='vi'
-eval "$(thefuck --alias)"
 alias eclipse="nohup /opt/eclipse/eclipse &>/dev/null &"
 
 export XMLLINT_INDENT="    "
