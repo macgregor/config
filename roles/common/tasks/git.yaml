@@ -1,0 +1,5 @@
+- name: ensure {{user_home}}/.gitconfig exists
+  copy: src=roles/common/files/gitconfig dest={{user_home}}/.gitconfig owner={{user}}
+
+- name: ensure {{user_home}}/.gitattribute exists
+  copy: src=roles/common/files/gitattribute dest={{user_home}}/.gitattribute owner={{user}}

@@ -1,5 +1,6 @@
-- include: bash.yaml
 - include: base.yaml
+- include: bash.yaml
+- include: git.yaml
 - include: pip.yaml
 - include: powerline.yaml
 - include: guake.yaml
