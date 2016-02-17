@@ -12,6 +12,8 @@ powerline
 git-passport
 pip
 generate ssh key
+keepass
+dropbox
 
 Config:
 .bashrc
@@ -22,8 +24,11 @@ Config:
 .gitpassport
 
 TODO:
-keepass
-dropbox
 eclipse
 java jdk
 upload new ssh key to github
+fix variable resolution with .gitconfig file
+
+Probably cant automate:
+dropbox initial setup
+firefox addons
