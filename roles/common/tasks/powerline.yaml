@@ -1,6 +1,15 @@
 - name: install powerline
   package: name=powerline state=latest
 
+- name: download powerline font symbols
+  get_url:  url=https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf dest=/usr/share/fonts
+
+- name: download powerline font symbols conf
+  get_url: url=https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf dest=/etc/fonts/conf.d
+
+- name: rebuild font cache
+  command: fc-cache -vf
+
 - name: ensure {{user_home}}/.config/powerline/themes/shell exists
   file: path="{{user_home}}/.config/powerline/themes/shell" state=directory  owner={{user}}
 
