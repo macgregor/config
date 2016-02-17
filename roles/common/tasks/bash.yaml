@@ -1,16 +1,20 @@
-- file: path="{{user_home}}/.bashrc" state=touch owner={{user}}
+- name: ensure {{user_home}}/.bashrc exists
+  file: path="{{user_home}}/.bashrc" state=touch owner={{user}}
 
-- file: path="{{user_home}}/.bash_profile" state=touch owner={{user}}
+- name: ensure {{user_home}}/.bash_profile exists
+  file: path="{{user_home}}/.bash_profile" state=touch owner={{user}}
 
-- file: path="{{user_home}}/.bashrc.d" state=directory owner={{user}}
+- name: ensure {{user_home}}/.bashrc.d exists
+  file: path="{{user_home}}/.bashrc.d" state=directory owner={{user}}
 
-- file: path="{{user_home}}/.login.d" state=directory owner={{user}}
+- name: ensure {{user_home}}/.login.d exists
+  file: path="{{user_home}}/.login.d" state=directory owner={{user}}
 
-- name: update .bashrc to load bashrc.d files
+- name: update .bashrc
   blockinfile:
     dest: "{{user_home}}/.bashrc"
     insertbefore: BOF
-    mark:  	"# {mark} ANSIBLE MANAGED .BASHRC"
+    marker: "# {mark} ANSIBLE MANAGED .BASHRC"
     block: |
         if [[ $- != *i* ]] ; then
             # shell is non-interactive. be done now!
@@ -29,14 +33,14 @@
             done
         fi
 
-- name: copy bashrc.d scripts
+- name: copy bashrc.d scripts to {{user_home}}/.bashrc.d/
   copy: src=roles/common/files/bashrc.d/ dest={{user_home}}/.bashrc.d/ owner={{user}}
 
-- name: update .bash_profile to load login.d files
+- name: update .bash_profile
   blockinfile:
     dest: "{{user_home}}/.bash_profile"
     insertbefore: BOF
-    mark:  	"# {mark} ANSIBLE MANAGED .BASH_PROFILE"
+    marker: "# {mark} ANSIBLE MANAGED .BASH_PROFILE"
     block: |
         if [ -d $HOME/.local/bin ]; then
             PATH=$HOME/.local/bin:$PATH
@@ -53,8 +57,8 @@
             done
         fi
 
-- name: copy login.d scripts
+- name: copy login.d scripts to {{user_home}}/.login.d/
   copy: src=roles/common/files/login.d dest={{user_home}}/.login.d/ owner={{user}}
 
-- name: copy vimrc
+- name: copy vimrc to {{user_home}}/.vimrc
   copy: src=roles/common/files/vimrc dest={{user_home}}/.vimrc owner={{user}}

@@ -1,33 +1,37 @@
-- name: ensure git hook dir exists
-  file: path="{{user_home}}/.git/hooks/bin" state=directory
+- name: ensure {{user_home}}/.git/hooks/bin exists
+  file: path="{{user_home}}/.git/hooks/bin" state=directory owner={{user}}
 
-- name: clone gitpassport
+- name: clone gitpassport to {{user_home}}/.git/hooks/bin/git-passport
   git: repo=https://github.com/cfi/git-passport.git dest="{{user_home}}/.git/hooks/bin/git-passport" version=merged_regex_noremote 
 
-- name: chmod execute gitpassport
-  file: path="{{user_home}}/.git/hooks/bin/git-passport/git-passport.py" mode="u=rwx,g=rx,o=rx" state=file
+- name: make sure {{user}} owns {{user_home}}/.git/hooks/bin/git-passport/
+  command: chown -R {{user}} {{user_home}}/.git/hooks/bin/git-passport/ warn=no
 
-- name: ensure pre-commit.d hook directory exists
-  file: path="{{user_home}}/.git/hooks/pre-commit.d" state=directory
+- name: chmod execute {{user_home}}/.git/hooks/bin/git-passport/git-passport.py
+  file: path="{{user_home}}/.git/hooks/bin/git-passport/git-passport.py" mode="u=rwx,g=rx,o=rx" state=file owner={{user}}
 
-- name: ensure pre-commit hook for gitpassport exists
-  file: src="{{user_home}}/.git/hooks/bin/git-passport/git-passport.py" dest="{{user_home}}/.git/hooks/pre-commit.d/00-git-passport" state=link
+- name: ensure {{user_home}}/.git/hooks/pre-commit.d exists
+  file: path="{{user_home}}/.git/hooks/pre-commit.d" state=directory owner={{user}}
 
-- name: ensure hook template dir exists
-  file: path="{{user_home}}/.git/templates/hooks" state=directory
+- name: ensure {{user_home}}/.git/hooks/pre-commit.d/00-git-passport exists
+  file: src="{{user_home}}/.git/hooks/bin/git-passport/git-passport.py" dest="{{user_home}}/.git/hooks/pre-commit.d/00-git-passport" state=link owner={{user}}
 
-- name: copy precommit hook
-  copy: src=./roles/common/scripts/pre-commit dest="{{user_home}}/.git/templates/hooks/pre-commit" mode="u=rwx,g=rx,o=rx"
+- name: ensure {{user_home}}/.git/templates/hooks exists
+  file: path="{{user_home}}/.git/templates/hooks" state=directory owner={{user}}
 
-- name: add passport alias to gitconfig
+- name: ensude {{user_home}}/.git/templates/hooks/pre-commit exists
+  copy: src=./roles/common/scripts/pre-commit dest="{{user_home}}/.git/templates/hooks/pre-commit" mode="u=rwx,g=rx,o=rx" owner={{user}}
+
+- name: update {{user_home}}/.gitconfig for gitpassport
   blockinfile:
     dest: "{{user_home}}/.gitconfig"
     insertbefore: BOF
+    marker: "# {mark} ANSIBLE MANAGED .GITCONFIG"
     block: |
       [alias]
           passport = !${HOME}/.git/hooks/bin/git-passport/git-passport.py
       [init]
           templatedir = ~/.git/templates
 
-- name: copy gitpassport config
-  copy: src=./roles/common/files/gitpassport dest="{{user_home}}/.gitpassport"
+- name: ensure {{user_home}}/.gitpassport exists
+  copy: src=./roles/common/files/gitpassport dest="{{user_home}}/.gitpassport" owner={{user}}

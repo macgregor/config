@@ -1,8 +1,8 @@
 - name: install powerline
   package: name=powerline state=latest
 
-- name: ensure directory for user powerline themes exists
+- name: ensure {{user_home}}/.config/powerline/themes/shell exists
   file: path="{{user_home}}/.config/powerline/themes/shell" state=directory  owner={{user}}
 
-- name: configure powerline shell
+- name: copy powerline shell config to {{user_home}}/.config/powerline/themes/shell/default.json
   copy: src=roles/common/files/powerline_shell_config.json dest="{{user_home}}/.config/powerline/themes/shell/default.json" owner={{user}}
