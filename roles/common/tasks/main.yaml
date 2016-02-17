@@ -1,4 +1,4 @@
-- include: user_configs.yaml
+- include: bash.yaml
 - include: base.yaml
 - include: pip.yaml
 - include: powerline.yaml

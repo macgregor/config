@@ -1,0 +1,60 @@
+- file: path="{{user_home}}/.bashrc" state=touch owner={{user}}
+
+- file: path="{{user_home}}/.bash_profile" state=touch owner={{user}}
+
+- file: path="{{user_home}}/.bashrc.d" state=directory owner={{user}}
+
+- file: path="{{user_home}}/.login.d" state=directory owner={{user}}
+
+- name: update .bashrc to load bashrc.d files
+  blockinfile:
+    dest: "{{user_home}}/.bashrc"
+    insertbefore: BOF
+    mark:  	"# {mark} ANSIBLE MANAGED .BASHRC"
+    block: |
+        if [[ $- != *i* ]] ; then
+            # shell is non-interactive. be done now!
+            return
+        fi
+        
+        # Source global definitions
+        if [ -f /etc/bashrc ]; then
+            . /etc/bashrc
+        fi
+        
+        # Load all files from .shell/bashrc.d directory
+        if [ -d $HOME/.bashrc.d ]; then
+            for file in $HOME/.bashrc.d/*.bash; do
+                source $file
+            done
+        fi
+
+- name: copy bashrc.d scripts
+  copy: src=roles/common/files/bashrc.d/ dest={{user_home}}/.bashrc.d/ owner={{user}}
+
+- name: update .bash_profile to load login.d files
+  blockinfile:
+    dest: "{{user_home}}/.bash_profile"
+    insertbefore: BOF
+    mark:  	"# {mark} ANSIBLE MANAGED .BASH_PROFILE"
+    block: |
+        if [ -d $HOME/.local/bin ]; then
+            PATH=$HOME/.local/bin:$PATH
+        fi
+        
+        if [ -f $HOME/.bashrc ]; then
+            source $HOME/.bashrc
+        fi
+        
+        # Load all files from .shell/login.d directory
+        if [ -d $HOME/.login.d ]; then
+            for file in $HOME/.login.d/*.sh; do
+                source $file
+            done
+        fi
+
+- name: copy login.d scripts
+  copy: src=roles/common/files/login.d dest={{user_home}}/.login.d/ owner={{user}}
+
+- name: copy vimrc
+  copy: src=roles/common/files/vimrc dest={{user_home}}/.vimrc owner={{user}}

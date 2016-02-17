@@ -1,16 +1,10 @@
-# .bashrc
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
-
 timestamp(){
-	date +%s%N
+    date +%s%N
 }
 
+# format an xml file, rewrites input file
 format_xml(){
-	cat $1 | xmllint --format --output $1 -
+    cat $1 | xmllint --format --output $1 -
 }
 
 dock(){
@@ -29,6 +23,7 @@ undock(){
     /usr/bin/xrandr --output eDP1 --auto
 }
 
+# expand all tabs to 4 spaces
 no_tabs(){
     find . -name $1 ! -type d -exec bash -c 'expand -t 4 "$0" > /tmp/e && mv /tmp/e "$0"' {} \;
 }
@@ -51,11 +46,13 @@ java6(){
     export PATH=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/bin:`echo ${PATH} | awk -v RS=: -v ORS=: '/jdk/ {next} {print}'`
 }
 
-# User specific aliases and functions
-#alias build="mvn clean install -DskipTests"
-#alias test="mvn test -fae"
-alias bat='pygmentize -g'
-alias ci='vi'
-alias eclipse="nohup /opt/eclipse/eclipse &>/dev/null &"
+# highlight text
+highlight() { e="$1"; shift; grep --color=always -Eih "$e|$" "$@"; }
 
-export XMLLINT_INDENT="    "
+# grep all the history!
+histgrep() { grep "$1" "$HISTFILE"; }
+
+# grep process table
+psgrep() { psc |grep -v grep |grep -i --color=auto "$@"; }
+
+pspid() { ps xao pid,args |grep -v grep |grep -i "$@" |awk '{print $1}'; }

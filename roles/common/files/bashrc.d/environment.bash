@@ -1,0 +1,1 @@
+export XMLLINT_INDENT="    "
