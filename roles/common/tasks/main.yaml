@@ -6,3 +6,5 @@
 - include: guake.yaml
 - include: ssh.yaml
 - include: gitpassport.yaml
+- include: dropbox.yaml
+- include: keepass.yaml
