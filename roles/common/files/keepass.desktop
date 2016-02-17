@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Keepass
+Exec=/usr/bin/keepass
+Terminal=false
+NoDisplay=true

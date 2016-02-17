@@ -3,3 +3,6 @@
 
 - name: ensure /usr/lib/keepass/plugins exists
   file: path=/usr/lib/keepass/plugins state=directory
+
+- name: create autostart entry to keepass
+  copy: src=roles/common/files/keepass.desktop dest={{user_home}}/.config/autostart owner={{user}}
