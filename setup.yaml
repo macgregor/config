@@ -3,5 +3,25 @@
   connection: local
   become: yes
   become_method: sudo
+  pre_tasks:
+    - command: whoami
+      register: reg_user_id
+      become: no
+    - debug: msg="User is {{reg_user_id.stdout}}"
+      when: "{{debug}}"
+    - command: uname -n 
+      register: reg_machine_name
+    - debug: msg="Machine name is {{reg_machine_name.stdout}}"
+      when: "{{debug}}"
+    - shell: getent passwd "{{reg_user_id.stdout}}" | cut -d ':' -f 5
+      register: reg_user_name
+    - debug: msg="User name is {{reg_user_name.stdout}}"
+      when: "{{debug}}"
+    - command: echo $HOME
+      register: reg_user_home
+      become: no
+    - debug: msg="User home is {{reg_user_home.stdout}}"
+      when: "{{debug}}"
   roles:
-    - common
+    - {role: beastop, when: reg_machine_name.stdout.find('fedora.laptop') != -1}
+

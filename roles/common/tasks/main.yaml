@@ -1,4 +1,3 @@
-- include: base.yaml
 - include: bash.yaml
 - include: git.yaml
 - include: pip.yaml

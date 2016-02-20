@@ -1,0 +1,31 @@
+- name: install bumblebee dependencies
+  package: name="{{item}}" state=latest
+  with_items:
+    - libbsd-devel 
+    - libbsd 
+    - glibc-devel 
+    - libX11-devel 
+    - help2man 
+    - autoconf 
+    - git 
+    - tar 
+    - glib2 
+    - glib2-devel 
+    - kernel-devel 
+    - kernel-headers 
+    - automake 
+    - gcc 
+    - gtk2-devel
+    - VirtualGL
+
+- name: install bumblebee repository info
+  package: name="{{item}}" state=present
+  with_items:
+    - "{{bumblebee_url}}"
+    - "{{bumblebee_nonfree_url}}"
+    
+- name: install bumblebee
+  package: name="{{item}}" state=latest
+  with_items:
+    - bbswitch-dkms
+    - bumblebee-nvidia
