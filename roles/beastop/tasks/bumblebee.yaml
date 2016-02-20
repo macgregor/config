@@ -1,3 +1,13 @@
+# good source for troubleshooting info:
+#    https://github.com/Bumblebee-Project/Bumblebee/issues/639
+#    https://fedoraproject.org/wiki/Bumblebee#Troubleshooting
+- name: get kernel version
+  command: uname -r
+  register: kernel_version
+
+- name: install matching kernel-devel
+  package: name=kernel-devel-{{kernel_version.stdout}} state=present
+
 - name: install bumblebee dependencies
   package: name="{{item}}" state=latest
   with_items:
@@ -11,7 +21,6 @@
     - tar 
     - glib2 
     - glib2-devel 
-    - kernel-devel 
     - kernel-headers 
     - automake 
     - gcc 
@@ -29,3 +38,37 @@
   with_items:
     - bbswitch-dkms
     - bumblebee-nvidia
+
+- name: "fix failed to set DRM interface version 1.4: Permission denied"
+  blockinfile:
+    dest: /etc/bumblebee/xorg.conf.nvidia
+    insertbefore: BOF
+    marker: "# {mark} ANSIBLE MANAGED NVIDIA CONF"
+    block: |
+        Section "Screen"
+            Identifier "Default Screen"
+            Device "DiscreteNvidia"
+        EndSection
+
+- name: "fix nvidia driver has not compiled successfully"
+  command: bumblebee-nvidia
+
+- name: make sure bbswitch is added to dkms
+  command: /usr/sbin/dkms add -m bbswitch -v 0.8.0
+  register: result
+  failed_when: result.rc != 0 and result.rc != 3
+
+- name: rebuild bbswitch
+  command: /usr/sbin/dkms build -m bbswitch -v 0.8.0
+  register: result
+  failed_when: result.rc != 0
+
+- name: install bbswitch to dkms
+  command: /usr/sbin/dkms install -m bbswitch -v 0.8.0
+  register: result
+  failed_when: result.rc != 0
+
+- name: probing
+  command: /sbin/modprobe bbswitch
+  register: result
+  failed_when: result.rc != 0
