@@ -1,6 +1,9 @@
 - name: install git
   package: name=git state=latest
 
+- name: install tig
+  package: name=tig state=latest
+
 - name: ensure {{user_home}}/.gitconfig exists
   template: src=roles/common/files/gitconfig dest={{user_home}}/.gitconfig owner={{user}}
 
