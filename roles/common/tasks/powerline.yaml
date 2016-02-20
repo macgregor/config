@@ -15,3 +15,6 @@
 
 - name: copy powerline shell config to {{user_home}}/.config/powerline/themes/shell/default.json
   copy: src=roles/common/files/powerline_shell_config.json dest="{{user_home}}/.config/powerline/themes/shell/default.json" owner={{user}}
+
+- name: install vim-enhanced
+  package: name=vim-enhanced state=latest
