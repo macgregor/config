@@ -1,0 +1,8 @@
+[spideroak-one-stable]
+name=SpiderOakONE Stable Distribution
+baseurl=http://apt.spideroak.com/spideroak_one_rpm/stable
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-spideroak-2011
+ file:///etc/pki/rpm-gpg/RPM-GPG-KEY-spideroak-2015
+enablegroups=0

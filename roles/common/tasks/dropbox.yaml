@@ -1,5 +1,5 @@
 - name: add dropbox repo to /etc/yum.repos.d
-  copy: src=roles/common/files/dropbox.repo dest=/etc/yum.repos.d
+  copy: src=roles/common/files/yum.repos.d/dropbox.repo dest=/etc/yum.repos.d
 
 - name: install dropbox
   package: name=nautilus-dropbox state=latest
