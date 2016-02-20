@@ -3,6 +3,10 @@
   connection: local
   become: yes
   become_method: sudo
+  vars_prompt:
+    - name: spideroak_password
+      prompt: "Spideroak password"
+      private: yes
   pre_tasks:
     - command: whoami
       register: reg_user_id
@@ -10,8 +14,8 @@
     - debug: msg="User is {{reg_user_id.stdout}}"
       when: "{{debug}}"
     - command: uname -n 
-      register: reg_machine_name
-    - debug: msg="Machine name is {{reg_machine_name.stdout}}"
+      register: reg_device_name
+    - debug: msg="Machine name is {{reg_device_name.stdout}}"
       when: "{{debug}}"
     - shell: getent passwd "{{reg_user_id.stdout}}" | cut -d ':' -f 5
       register: reg_user_name
@@ -23,5 +27,5 @@
     - debug: msg="User home is {{reg_user_home.stdout}}"
       when: "{{debug}}"
   roles:
-    - {role: beastop, when: reg_machine_name.stdout.find('fedora.laptop') != -1}
+    - {role: beastop, when: reg_device_name.stdout.find('fedora.laptop') != -1}
 
