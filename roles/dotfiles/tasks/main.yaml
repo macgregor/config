@@ -1,0 +1,4 @@
+- include: bash.yaml
+- include: git.yaml
+- include: gitpassport.yaml
+- include: vim.yaml

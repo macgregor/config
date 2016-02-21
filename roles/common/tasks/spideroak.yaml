@@ -5,14 +5,14 @@
   package: name=SpiderOak state=latest
 
 - name: check for new user setup
-  shell: sudo -u {{user}} SpiderOak --user-info
+  shell: sudo -u {{user}} SpiderOak --user-info warn=no
   register: result
 
 - debug: msg="stdout {{result.stdout}}"
   when: "{{debug}}"
 
 - name: generate spideroak setup file
-  template: src=roles/common/files/spideroak.json dest=/dev/shm/spideroak.json
+  template: src=roles/common/files/json/spideroak.json dest=/dev/shm/spideroak.json
   when: result.stdout.find('New User Setup') != -1
 
 - name: spideroak setup

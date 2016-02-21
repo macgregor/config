@@ -1,2 +1,2 @@
 dependencies:
-  - {role: common, when: "{{run_common}}"}
+  - {role: common, when: "{{install and install_full}}"}

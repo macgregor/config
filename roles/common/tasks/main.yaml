@@ -1,11 +1,10 @@
-- include: bash.yaml
 - include: git.yaml
 - include: pip.yaml
 - include: powerline.yaml
 - include: guake.yaml
 - include: ssh.yaml
 - include: gitpassport.yaml
-- include: dropbox.yaml
 - include: keepass.yaml
 - include: chrome.yaml
 - include: spideroak.yaml
+- include: flash.yaml

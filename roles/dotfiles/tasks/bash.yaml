@@ -34,7 +34,7 @@
         fi
 
 - name: copy bashrc.d scripts to {{user_home}}/.bashrc.d/
-  copy: src=roles/common/files/bashrc.d/ dest={{user_home}}/.bashrc.d/ owner={{user}}
+  copy: src=roles/dotfiles/files/bashrc.d/ dest={{user_home}}/.bashrc.d/ owner={{user}}
 
 - name: update .bash_profile
   blockinfile:
@@ -58,7 +58,7 @@
         fi
 
 - name: copy login.d scripts to {{user_home}}/.login.d/
-  copy: src=roles/common/files/login.d dest={{user_home}}/.login.d/ owner={{user}}
+  copy: src=roles/dotfiles/files/login.d dest={{user_home}}/.login.d/ owner={{user}}
 
 - name: copy vimrc to {{user_home}}/.vimrc
-  copy: src=roles/common/files/vimrc dest={{user_home}}/.vimrc owner={{user}}
+  copy: src=roles/dotfiles/files/vimrc dest={{user_home}}/.vimrc owner={{user}}

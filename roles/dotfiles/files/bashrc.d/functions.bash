@@ -1,3 +1,7 @@
+hello(){
+    echo "HELLO WORLD!"
+}
+
 timestamp(){
     date +%s%N
 }
