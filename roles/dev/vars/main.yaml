@@ -4,5 +4,3 @@ bumblebee_url: http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee/fedo
 bumblebee_nonfree_url: http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora23/noarch/bumblebee-nonfree-release-1.2-1.noarch.rpm
 spideroak_user: mail@mmstratton.com
 spideroak_reinstall: "false"
-gitpassport_installed: true
-powerline_installed: true

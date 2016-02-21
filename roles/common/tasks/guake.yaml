@@ -2,4 +2,4 @@
   package: name=guake state=latest
 
 - name: create guake autostart file {{user_home}}/.config/autostart/guake.desktop
-  copy: src=roles/common/files/guake.desktop dest={{user_home}}/.config/autostart owner={{user}}
+  copy: src=roles/common/files/autostart/guake.desktop dest={{user_home}}/.config/autostart owner={{user}}

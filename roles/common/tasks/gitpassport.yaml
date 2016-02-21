@@ -20,18 +20,4 @@
   file: path="{{user_home}}/.git/templates/hooks" state=directory owner={{user}}
 
 - name: ensude {{user_home}}/.git/templates/hooks/pre-commit exists
-  copy: src=./roles/common/scripts/pre-commit dest="{{user_home}}/.git/templates/hooks/pre-commit" mode="u=rwx,g=rx,o=rx" owner={{user}}
-
-- name: update {{user_home}}/.gitconfig for gitpassport
-  blockinfile:
-    dest: "{{user_home}}/.gitconfig"
-    insertbefore: BOF
-    marker: "# {mark} ANSIBLE MANAGED .GITCONFIG"
-    block: |
-      [alias]
-          passport = !${HOME}/.git/hooks/bin/git-passport/git-passport.py
-      [init]
-          templatedir = ~/.git/templates
-
-- name: ensure {{user_home}}/.gitpassport exists
-  copy: src=./roles/common/files/gitpassport dest="{{user_home}}/.gitpassport" owner={{user}}
+  copy: src=roles/common/files/scripts/pre-commit dest="{{user_home}}/.git/templates/hooks/pre-commit" mode="u=rwx,g=rx,o=rx" owner={{user}}

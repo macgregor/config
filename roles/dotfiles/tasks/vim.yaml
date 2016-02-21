@@ -1,0 +1,16 @@
+- name: copy .vimrc
+  copy: src=roles/dotfiles/files/vimrc dest={{user_home}}/.vimrc
+
+- debug: msg="powerline installed ? {{powerline_installed}}"
+  when: debug
+- name: update {{user_home}}/.vimrc for powerline
+  when: powerline_installed
+  blockinfile:
+    dest: "{{user_home}}/.vimrc"
+    insertbefore: BOF
+    marker: "\" {mark} POWERLIE .VIMRC"
+    block: |
+      python from powerline.vim import setup as powerline_setup
+      python powerline_setup()
+      python del powerline_setup
+
