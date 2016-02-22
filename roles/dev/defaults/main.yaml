@@ -1,6 +1,0 @@
----
-user_name : "{{reg_user_name.stdout}}"
-user_home : "{{reg_user_home.stdout}}"
-user : "{{reg_user_id.stdout}}"
-github_username: "{{reg_user_id.stdout}}"
-device_name: "{{reg_device_name.stdout}}"

@@ -6,3 +6,6 @@ spideroak_user: mail@mmstratton.com
 spideroak_reinstall: "false"
 gitpassport_installed: true
 powerline_installed: true
+java_packages:
+  - java-1.7.0-openjdk
+  - java-1.8.0-openjdk

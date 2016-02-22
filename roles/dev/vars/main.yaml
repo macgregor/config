@@ -1,6 +1,0 @@
----
-user_email : development@mmstratton.com
-bumblebee_url: http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee/fedora23/noarch/bumblebee-release-1.2-1.noarch.rpm
-bumblebee_nonfree_url: http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora23/noarch/bumblebee-nonfree-release-1.2-1.noarch.rpm
-spideroak_user: mail@mmstratton.com
-spideroak_reinstall: "false"
