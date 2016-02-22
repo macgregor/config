@@ -1,0 +1,4 @@
+- name: install cli tools
+  package: name={{item}} state=latest
+  with_items:
+    - unzip
