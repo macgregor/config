@@ -1,0 +1,9 @@
+python-setuptools
+git
+python-devel
+python-dnf
+python-pip
+libxml2-devel
+libxslt-devel
+redhat-rpm-config
+libselinux-python
