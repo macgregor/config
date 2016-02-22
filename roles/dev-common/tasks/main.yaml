@@ -1,4 +1,5 @@
 ---
+- include: cli_tools.yaml
 - include: git.yaml
 - include: pip.yaml
 - include: gitpassport.yaml

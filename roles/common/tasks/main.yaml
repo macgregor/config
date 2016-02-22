@@ -1,4 +1,3 @@
-- include: pip.yaml
 - include: powerline.yaml
 - include: guake.yaml
 - include: ssh.yaml
