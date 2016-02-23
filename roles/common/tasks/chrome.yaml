@@ -1,5 +1,5 @@
 - name: install google repo
-  copy: src=roles/common/files/yum.repos.d/google.repo dest=/etc/yum.repos.d/google.repo
+  copy: src=roles/common/files/yum.repos.d/google-chrome.repo dest=/etc/yum.repos.d/google-chrome.repo
 
 - name: install chrome
   package: name=google-chrome-stable state=latest

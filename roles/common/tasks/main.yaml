@@ -1,3 +1,4 @@
+- include: repos.yaml
 - include: powerline.yaml
 - include: guake.yaml
 - include: ssh.yaml
@@ -5,3 +6,4 @@
 - include: chrome.yaml
 - include: spideroak.yaml
 - include: flash.yaml
+- include: spotify.yaml
