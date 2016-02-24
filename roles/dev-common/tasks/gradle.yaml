@@ -1,0 +1,11 @@
+- name: download gradle
+  get_url: url={{gradle_url}} dest=src/gradle.zip
+
+- name: extract gradle
+  unarchive: src=src/gradle.zip dest=/usr/share creates=/usr/share/gradle-2.11 owner={{user}}
+
+- name: set GRADLE_HOME
+  lineinfile: dest={{user_home}}/.bashrc.d/environment.bash line='export GRADLE_HOME=/usr/share/gradle-2.11'
+
+- name: make sure gradle is in PATH
+  lineinfile: dest={{user_home}}/.bashrc.d/environment.bash line='export PATH=$GRADLE_HOME/bin:$PATH'
