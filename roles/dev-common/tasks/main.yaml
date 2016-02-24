@@ -6,3 +6,4 @@
 - include: java.yaml
 - include: eclipse.yaml
 - include: gradle.yaml
+- include: python.yaml
