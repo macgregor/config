@@ -43,6 +43,5 @@
     - debug: msg="gitpassport_installed + {{reg_gitpassport_installed.rc}}"
       when: "{{debug}}"
   roles:
-    - {role: beastop, when: "{{reg_device_name.stdout.find('fedora.laptop') != -1 and install}}"}
     - {role: dotfiles}
-
+    - {role: beastop, when: "{{reg_device_name.stdout.find('fedora.laptop') != -1 and install}}"}
