@@ -1,0 +1,11 @@
+- name: download eclipse
+  get_url: url={{eclipse_url}} dest=src/eclipse.tar.gz
+
+- name: extract eclipse
+  unarchive: src=src/eclipse.tar.gz dest=/usr/share creates=/usr/share/eclipse owner={{user}}
+
+- name: add eclipse to bin
+  file: src=/usr/share/eclipse/eclipse dest=/usr/bin/eclipse state=link
+
+- name: add eclipse alias to bashrc
+  lineinfile: dest={{user_home}}/.bashrc.d/alias.bash line='alias eclipse="nohup /usr/share/eclipse/eclipse &>/dev/null &"'
