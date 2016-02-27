@@ -6,6 +6,8 @@ echo "$(date)" >> ./setup.log
 dnf_packages=$(cat requirements/dnf | sed ':a;N;$!ba;s/\n/ /g')
 sudo dnf install -y $dnf_packages &>> ./setup.log
 
+sudo update-alternatives --set python /usr/bin/python2
+
 echo "Installing Ansible"
 sudo pip install -r requirements/pip &>> ./setup.log
 
@@ -15,7 +17,9 @@ sudo ansible-galaxy install -r requirements/ansible.yaml &>> ./setup.log
 ansible_extra_vars=${@:1}
 ansible-playbook setup.yaml -i HOSTS --ask-become-pass  --module-path ./ansible_modules -e "$ansible_extra_vars" 2>&1 | tee -a ./setup.log
 
-sourcee ~/.bashrc
+source ~/.bashrc
+
+sudo update-alternatives --set python /usr/bin/python3
 
 echo "========== Finished Setup ==========" >> ./setup.log
 echo "Set up complete, see ./setup.log for details"

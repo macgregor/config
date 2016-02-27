@@ -25,7 +25,10 @@
     - automake 
     - gcc 
     - gtk2-devel
-    - VirtualGL
+    - primus.x86_64
+    - VirtualGL.x86_64
+    - VirtualGL.i686
+    - primus.i686
 
 - name: install bumblebee repository info
   package: name="{{item}}" state=present
@@ -72,3 +75,7 @@
   command: /sbin/modprobe bbswitch
   register: result
   failed_when: result.rc != 0
+
+- name: remove nouveau driver
+  package: name=xorg-x11-drv-nouveau state=absent
+
