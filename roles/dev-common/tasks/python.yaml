@@ -1,11 +1,11 @@
 - name: ensure python3 is installed
-  package: name=python3 state=latest
+  package: name={{item}} state=latest
+  with_items:
+    - python3
+    - python3-devel
 
 - name: setup python2 alternatives
   command: alternatives --install /usr/bin/python python /usr/bin/python2 1
 
 - name: setup python3 alternatives
   command: alternatives --install /usr/bin/python python /usr/bin/python3 0
-
-- name: set python alternative to python 3
-  command: update-alternatives --set python /usr/bin/python3

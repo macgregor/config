@@ -1,5 +1,4 @@
 ---
-- include: repos.yaml
 - include: bumblebee.yaml
 - include: chromium-touchpad-drivers.yaml
 - include: steam.yaml
