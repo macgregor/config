@@ -1,5 +1,5 @@
-- name: install cli tools
+- name: install vagrant
   package: name={{item}} state=latest
   become: yes
   with_items:
-    - unzip
+    - vagrant

@@ -2,6 +2,6 @@
 127.0.0.1
 
 [local:vars]
-debug=false
+debug=true
 install=true
 install_full=true

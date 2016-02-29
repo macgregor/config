@@ -1,5 +1,5 @@
-- name: install cli tools
+- name: install virtualbox
   package: name={{item}} state=latest
   become: yes
   with_items:
-    - unzip
+    - VirtualBox.x86_64

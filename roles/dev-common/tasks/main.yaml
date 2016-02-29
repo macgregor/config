@@ -1,9 +1,11 @@
 ---
 - include: cli_tools.yaml
 - include: git.yaml
+- include: python.yaml
 - include: pip.yaml
 - include: gitpassport.yaml
 - include: java.yaml
 - include: eclipse.yaml
 - include: gradle.yaml
-- include: python.yaml
+- include: virtualbox.yaml
+- include: vagrant.yaml

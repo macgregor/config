@@ -1,5 +1,6 @@
 - name: install libgestures dependencies
   package: name="{{item}}" state=latest
+  become: yes
   with_items:
     - gcc-c++
     - jsoncpp
@@ -10,21 +11,26 @@
 
 - name: build libgestures
   command: make chdir=./src/libgestures
+  become: yes
 
 - name: install libgestures
   command: make install chdir=./src/libgestures
+  become: yes
 
 - name: clone libevdevc to ./src/libevdevc
   git: repo=https://github.com/hugegreenbug/libevdevc dest="./src/libevdevc" update=no
 
 - name: build libevdevc
   command: make chdir=./src/libevdevc
+  become: yes
 
 - name: install libevdevc
   command: make install chdir=./src/libevdevc
+  become: yes
 
 - name: install xf86-input-cmt dependencies
   package: name="{{item}}" state=latest
+  become: yes
   with_items:
     - xorg-x11-server-devel
 
@@ -33,28 +39,36 @@
 
 - name: configure xf86-input-cmt
   command: ./configure --prefix=/usr chdir=./src/xf86-input-cmt
+  become: yes
 
 - name: build xf86-input-cmt
   command: make chdir=./src/xf86-input-cmt/src
+  become: yes
 
 - name: install xf86-input-cmt
   command: make install chdir=./src/xf86-input-cmt/src
+  become: yes
 
 - name: backup synaptic touchpad configuration
   copy: src=/usr/share/X11/xorg.conf.d/50-synaptics.conf dest=/usr/share/X11/xorg.conf.d/50-synaptics.conf.backup force=no
   ignore_errors: yes
+  become: yes
 
 - name: delete synaptic touchpad configuration
   file: name=/usr/share/X11/xorg.conf.d/50-synaptics.conf state=absent
+  become: yes
 
 - name: copy 20-mouse.conf to /usr/share/X11/xorg.conf.d/20-mouse.conf
   copy: src=./src/xf86-input-cmt/xorg-conf/20-mouse.conf dest=/usr/share/X11/xorg.conf.d/20-mouse.conf
+  become: yes
 
 - name: copy 40-touchpad-cmt.conf to /usr/share/X11/xorg.conf.d/40-touchpad-cmt.conf
   copy: src=./src/xf86-input-cmt/xorg-conf/40-touchpad-cmt.conf dest=/usr/share/X11/xorg.conf.d/40-touchpad-cmt.conf
+  become: yes
 
 - name: copy 50-touchpad-cmt-elan.conf to /usr/share/X11/xorg.conf.d/50-touchpad-cmt-elan.conf
   copy: src=./src/xf86-input-cmt/xorg-conf/50-touchpad-cmt-elan.conf dest=/usr/share/X11/xorg.conf.d/50-touchpad-cmt-elan.conf
+  become: yes
 
 - name: enable tap input
   command: xinput --set-prop --type=int --format=8 "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1

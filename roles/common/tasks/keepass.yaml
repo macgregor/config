@@ -1,8 +1,10 @@
 - name: install keepass
   package: name=keepass state=latest
+  become: yes
 
 - name: ensure /usr/lib/keepass/plugins exists
   file: path=/usr/lib/keepass/plugins state=directory
+  become: yes
 
 - name: create autostart entry to keepass
   copy: src=roles/common/files/autostart/keepass.desktop dest={{user_home}}/.config/autostart owner={{user}}

@@ -1,11 +1,14 @@
 - name: install powerline
   package: name=powerline state=latest
+  become: yes
 
 - name: download powerline font symbols
   get_url:  url=https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf dest=/usr/share/fonts
+  become: yes
 
 - name: download powerline font symbols conf
   get_url: url=https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf dest=/etc/fonts/conf.d
+  become: yes
 
 - name: rebuild font cache
   command: fc-cache -vf
@@ -18,3 +21,4 @@
 
 - name: install vim-enhanced
   package: name=vim-enhanced state=latest
+  become: yes

@@ -1,5 +1,7 @@
 - name: install flash repo
   package: name=http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm state=present
+  become: yes
 
 - name: install flash
   package: name=flash-plugin state=latest
+  become: yes

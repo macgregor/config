@@ -3,3 +3,4 @@
 
 - name: install chrome
   package: name=google-chrome-stable state=latest
+  become: yes
