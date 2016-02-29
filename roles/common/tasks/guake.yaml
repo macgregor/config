@@ -1,5 +1,6 @@
 - name: install quake
   package: name=guake state=latest
+  become: yes
 
 - name: create guake autostart file {{user_home}}/.config/autostart/guake.desktop
   copy: src=roles/common/files/autostart/guake.desktop dest={{user_home}}/.config/autostart owner={{user}}

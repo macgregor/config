@@ -1,0 +1,3 @@
+- name: install steam
+  package: name=steam state=latest
+  become: yes

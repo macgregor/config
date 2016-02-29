@@ -1,8 +1,11 @@
 - name: install rpm fusion free
   package: name=http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-23.noarch.rpm state=present 
+  become: yes
 
 - name: install rpm fusion nonfree
   package: name=http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-23.noarch.rpm state=present
+  become: yes
 
 - name: copy common yum repos
   copy: src=roles/common/files/yum.repos.d/ dest=/etc/yum.repos.d/
+  become: yes

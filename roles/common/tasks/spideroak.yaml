@@ -3,9 +3,10 @@
 
 - name: install spideroak
   package: name=SpiderOak state=latest
+  become: yes
 
 - name: check for new user setup
-  shell: sudo -u {{user}} SpiderOak --user-info warn=no
+  shell: SpiderOak --user-info warn=no
   register: result
 
 - debug: msg="stdout {{result.stdout}}"
@@ -16,7 +17,7 @@
   when: result.stdout.find('New User Setup') != -1
 
 - name: spideroak setup
-  shell: sudo -u {{user}} SpiderOak --setup=/dev/shm/spideroak.json
+  shell: SpiderOak --setup=/dev/shm/spideroak.json
   when: result.stdout.find('New User Setup') != -1
 
 - name: remove spideroak setup file

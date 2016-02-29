@@ -1,17 +1,17 @@
 - name: a playbook to setup my local machine with my basic customizations
   hosts: local
   connection: local
-  become: yes
   become_method: sudo
   vars_prompt:
     - name: spideroak_password
       prompt: "Spideroak password"
       private: yes
   pre_tasks:
+    - debug: msg="{{ ansible_env | to_nice_json }}"
+      when: "{{debug}}"
 
     - command: whoami
       register: reg_user_id
-      become: no
     - debug: msg="User is {{reg_user_id.stdout}}"
       when: "{{debug}}"
 
@@ -27,7 +27,6 @@
 
     - command: echo $HOME
       register: reg_user_home
-      become: no
     - debug: msg="User home is {{reg_user_home.stdout}}"
       when: "{{debug}}"
 
@@ -38,7 +37,6 @@
 
     - command: git passport warn=no
       ignore_errors: yes
-      become: no
       register: reg_gitpassport_installed
     - debug: msg="gitpassport_installed + {{reg_gitpassport_installed.rc}}"
       when: "{{debug}}"

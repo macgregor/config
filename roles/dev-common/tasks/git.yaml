@@ -1,5 +1,7 @@
 - name: install git
   package: name=git state=latest
+  become: yes
 
 - name: install tig
   package: name=tig state=latest
+  become: yes
