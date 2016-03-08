@@ -3,5 +3,3 @@
 
 [local:vars]
 debug=true
-install=true
-install_full=true
