@@ -1,0 +1,6 @@
+---
+user_name : "{{ansible_user_gecos}}"
+user_home : "{{ansible_env.HOME}}"
+user : "{{ansible_env.USER}}"
+github_username: "{{ansible_env.USER}}"
+device_name: "{{facter_fqdn}}"
