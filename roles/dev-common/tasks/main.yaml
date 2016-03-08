@@ -1,11 +1,21 @@
 ---
 - include: cli_tools.yaml
+  when: install_cli_tools
 - include: git.yaml
-- include: python.yaml
+  when: install_git
 - include: pip.yaml
+  when: install_pip
+- include: python3.yaml
+  when: install_python3
 - include: gitpassport.yaml
+  when: install_gitpassport
 - include: java.yaml
+  when: install_java
 - include: eclipse.yaml
+  when: install_eclipse
 - include: gradle.yaml
+  when: install_gradle
 - include: virtualbox.yaml
+  when: install_virtualbox
 - include: vagrant.yaml
+  when: install_vagrant
