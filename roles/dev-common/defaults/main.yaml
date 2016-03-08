@@ -1,0 +1,12 @@
+---
+install_cli_tools: true
+install_eclipse: false
+install_gitpassport: false
+install_git: true
+install_gradle: false
+install_java: true
+install_pip: true
+install_python3: false
+install_vagrant: false
+install_virtualbox: false
+
