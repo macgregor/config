@@ -9,4 +9,5 @@ install_pip: true
 install_python3: false
 install_vagrant: false
 install_virtualbox: false
-
+eclipse_url: http://eclipse.mirror.rafal.ca/technology/epp/downloads/release/mars/1/eclipse-jee-mars-1-linux-gtk-x86_64.tar.gz
+gradle_url: https://services.gradle.org/distributions/gradle-2.11-all.zip

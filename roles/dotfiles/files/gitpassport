@@ -8,6 +8,6 @@ name = Matthew Stratton
 service = .*github\.com:macgregor.*
 
 [passport 1]
-email = mstratto@redhat.com.com
+email = mstratto@redhat.com
 name = Matthew Stratton
 service = .*
