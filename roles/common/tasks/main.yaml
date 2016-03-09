@@ -10,8 +10,6 @@
   when: install_keepass
 - include: chrome.yaml
   when: install_chrome
-- include: spideroak.yaml
-  when: install_spideroak
 - include: flash.yaml
   when: install_flash
 - include: spotify.yaml

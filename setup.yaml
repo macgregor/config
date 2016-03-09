@@ -2,10 +2,6 @@
   hosts: local
   connection: local
   become_method: sudo
-  vars_prompt:
-    - name: spideroak_password
-      prompt: "Spideroak password"
-      private: yes
   roles:
     - {role: dotfiles}
     - {role: beastop, when: "{{facter_fqdn.find('fedora.laptop') != -1}}"}

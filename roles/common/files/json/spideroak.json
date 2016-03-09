@@ -1,6 +1,0 @@
-{
-    "username": "{{spideroak_user}}",
-    "password": "{{spideroak_password}}",
-    "reinstall": {{spideroak_reinstall}},
-    "device_name": "{{device_name}}"
-}

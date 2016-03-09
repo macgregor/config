@@ -49,7 +49,6 @@ TODO
 * pip
 * generate ssh key
 * keepass
-* spideroak
 * bumblebee
 * flash
 
