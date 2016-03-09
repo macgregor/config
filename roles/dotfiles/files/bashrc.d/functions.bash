@@ -1,7 +1,3 @@
-hello(){
-    echo "HELLO WORLD!"
-}
-
 timestamp(){
     date +%s%N
 }
@@ -32,22 +28,8 @@ no_tabs(){
     find . -name $1 ! -type d -exec bash -c 'expand -t 4 "$0" > /tmp/e && mv /tmp/e "$0"' {} \;
 }
 
-java8(){
-    export JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.65-15.b17.fc23.x86_64"
-    sudo update-alternatives --set java /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.65-15.b17.fc23.x86_64/jre/bin/java
-    export PATH=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.65-15.b17.fc23.x86_64/bin:`echo ${PATH} | awk -v RS=: -v ORS=: '/jdk/ {next} {print}'`
-}
-
-java7(){
-    export JAVA_HOME="/usr/java/jdk1.7.0_71"
-    sudo update-alternatives --set java /usr/java/jdk1.7.0_71/bin/java
-    export PATH=/usr/java/jdk1.7.0_71/bin:`echo ${PATH} | awk -v RS=: -v ORS=: '/jdk/ {next} {print}'`
-}
-
-java6(){
-    export JAVA_HOME="/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64"
-    sudo update-alternatives --set java /usr/lib/jvm/jre-1.6.0-openjdk.x86_64/bin/java
-    export PATH=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/bin:`echo ${PATH} | awk -v RS=: -v ORS=: '/jdk/ {next} {print}'`
+find_replace(){
+    find . -type f -path "$1" -exec sed -i.backup "$2" {} \;
 }
 
 # highlight text
