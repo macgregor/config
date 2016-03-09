@@ -1,0 +1,32 @@
+- name: ensure python3 is installed
+  package: name={{item}} state=latest
+  become: yes
+  with_items:
+    - python3
+    - python3-devel
+
+- name: setup python2 alternatives
+  command: alternatives --install /usr/bin/python python /usr/bin/python2 1
+  become: yes
+
+- name: setup python3 alternatives
+  command: alternatives --install /usr/bin/python python /usr/bin/python3 0
+  become: yes
+
+- name: install latest version of python3-pip
+  package: name=python3-pip state=latest
+  become: yes
+
+- name: download pip/python3 fix
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=src/get-pip.py
+
+- name: fix pip/python3
+  command: python src/get-pip.py
+  become: yes
+
+- name: download easy_install/python3 fix
+  get_url: url=https://bootstrap.pypa.io/ez_setup.py dest=src/ez_setup.py
+
+- name: fix easy_install/python3
+  command: python src/ez_setup.py
+  become: yes
