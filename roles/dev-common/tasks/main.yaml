@@ -20,3 +20,4 @@
 - include: vagrant.yaml
   when: install_vagrant
 - include: docker.yaml
+  when: install_docker
