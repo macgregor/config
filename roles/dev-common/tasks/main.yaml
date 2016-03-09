@@ -9,3 +9,4 @@
 - include: gradle.yaml
 - include: virtualbox.yaml
 - include: vagrant.yaml
+- include: docker.yaml
