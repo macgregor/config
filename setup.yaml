@@ -4,5 +4,5 @@
   become_method: sudo
   roles:
     - {role: dotfiles}
-    - {role: beastop, when: "{{facter_fqdn.find('fedora.laptop') != -1}}"}
-    - {role: lenovo, when: "{{facter_fqdn.find('fedora.lenovo') != -1}}"}
+    - {role: beastop, when: "{{ansible_fqdn.find('fedora.laptop') != -1}}"}
+    - {role: lenovo, when: "{{ansible_fqdn.find('fedora.lenovo') != -1}}"}
