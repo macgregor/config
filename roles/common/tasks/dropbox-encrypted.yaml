@@ -8,6 +8,7 @@
     - dropbox
     - fuse-encfs.x86_64 
     - cryptkeeper.x86_64
+    - expect
 
 - name: check if encfs encrypted dir exist
   stat: path={{dropbox_encfs_encrypted_dir}}/.encfs6.xml
@@ -22,10 +23,6 @@
 - name: setup encfs
   shell: roles/common/files/scripts/encfs_setup.sh {{dropbox_encfs_encrypted_dir}} {{dropbox_encfs_unencrypted_dir}} {{dropbox_encfs_password}}
   when: encfs.stat.exists != true
-  register: encfs_out
-
-- debug: msg="{{encfs_out.stdout}}"
-  when: debug and encfs.stat.exists != true
 
 - name: setup encfs does not properly mount, fix it
   command: fusermount -u {{dropbox_encfs_unencrypted_dir}}
