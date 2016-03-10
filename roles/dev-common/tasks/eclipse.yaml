@@ -6,6 +6,3 @@
 
 - name: add eclipse to bin
   file: src=/usr/share/eclipse/eclipse dest=/usr/bin/eclipse state=link
-
-- name: add eclipse alias to bashrc
-  lineinfile: dest={{user_home}}/.bashrc.d/alias.bash line='alias eclipse="nohup /usr/share/eclipse/eclipse &>/dev/null &"'

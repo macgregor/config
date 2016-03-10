@@ -1,6 +1,3 @@
 - name: install java8
   package: name=java-1.8.0-openjdk-devel state=latest
   become: true
-
-- name: set JAVA_HOME
-  lineinfile: dest={{user_home}}/.bashrc.d/environment.bash line='export JAVA_HOME=/usr/lib/jvm/java'

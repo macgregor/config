@@ -34,7 +34,9 @@
         fi
 
 - name: copy bashrc.d scripts to {{user_home}}/.bashrc.d/
-  copy: src=roles/dotfiles/files/bashrc.d/ dest={{user_home}}/.bashrc.d/ owner={{user}}
+  template: src={{item}} dest={{user_home}}/.bashrc.d/{{item | basename}} owner={{user}}
+  with_fileglob:
+  - roles/dotfiles/files/bashrc.d/*
 
 - name: update .bash_profile
   blockinfile:

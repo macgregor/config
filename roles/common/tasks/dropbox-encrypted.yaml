@@ -38,5 +38,5 @@
   failed_when: out.rc > 1
 
 - name: mount unencrypted dir
-  shell: echo {{dropbox_encfs_password}} | encfs -S {{dropbox_encfs_encrypted_dir}} {{dropbox_encfs_unencrypted_dir}}
-  no_log: true
+  shell: echo {{dropbox_encfs_password}} | encfs -S --idle=15 {{dropbox_encfs_encrypted_dir}} {{dropbox_encfs_unencrypted_dir}}
+  no_log: true  
