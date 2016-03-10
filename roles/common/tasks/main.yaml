@@ -14,3 +14,5 @@
   when: install_flash
 - include: spotify.yaml
   when: install_spotify
+- include: dropbox-encrypted.yaml
+  when: install_dropbox

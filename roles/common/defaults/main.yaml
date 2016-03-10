@@ -7,3 +7,4 @@ install_keepass: false
 install_chrome: false
 install_flash: false
 install_spotify: false
+install_dropbox: false
