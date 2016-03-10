@@ -1,7 +1,5 @@
 ---
 user_email : mstratto@redhat.com
 github_username: macgregor
-spideroak_user: mail@mmstratton.com
-spideroak_reinstall: false
 gitpassport_installed: true
 powerline_installed: true

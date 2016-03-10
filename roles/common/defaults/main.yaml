@@ -5,6 +5,6 @@ install_guake: false
 install_ssh: false
 install_keepass: false
 install_chrome: false
-install_spideroak: false
 install_flash: false
 install_spotify: false
+install_dropbox: false

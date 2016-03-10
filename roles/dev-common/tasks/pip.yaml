@@ -3,11 +3,13 @@
   become: yes
 
 - name: install virtualenv
+  become: yes
   pip:
     name: virtualenv
     state: latest
 
 - name: update pip using pip
+  become: yes
   pip:
     name: pip
     state: latest
