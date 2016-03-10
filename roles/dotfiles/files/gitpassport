@@ -10,4 +10,9 @@ service = .*github\.com:macgregor.*
 [passport 1]
 email = mstratto@redhat.com
 name = Matthew Stratton
-service = .*
+service = .*github\.com:esbtools.*
+
+[passport 2]
+email = mstratto@redhat.com
+name = Matthew Stratton
+service = .*redhat\.com.*
