@@ -1,3 +1,6 @@
+- include_vars: "{{secrets_file}}"
+  no_log: true
+
 - name: install dropbox (and encryption deps)
   package: name={{item}} state=latest
   become: yes
@@ -24,6 +27,7 @@
   shell: roles/common/files/scripts/encfs_setup.sh {{dropbox_encfs_encrypted_dir}} {{dropbox_encfs_unencrypted_dir}} {{dropbox_encfs_password}}
   when: unencrpyted_dir.stat.exists != true and encrpyted_dir.stat.exists != true
   register: encfs_out
+  no_log: true
 
 - debug: msg="{{encfs_out.stdout}}"
   when: debug and unencrpyted_dir.stat.exists != true and encrpyted_dir.stat.exists != true
@@ -35,3 +39,4 @@
 
 - name: mount unencrypted dir
   shell: echo {{dropbox_encfs_password}} | encfs -S {{dropbox_encfs_encrypted_dir}} {{dropbox_encfs_unencrypted_dir}}
+  no_log: true
