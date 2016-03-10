@@ -13,7 +13,7 @@ echo "Installing Ansible Galaxy Requirements"
 sudo ansible-galaxy install -r requirements/ansible.yaml &>> ./setup.log
 
 ansible_extra_vars=${@:1}
-ansible-playbook setup.yaml -i HOSTS --ask-become-pass --ask-vault-pass --module-path ./ansible_modules -e "$ansible_extra_vars" 2>&1 | tee -a ./setup.log
+ansible-playbook setup.yaml -i HOSTS --ask-vault-pass --module-path ./ansible_modules -e "$ansible_extra_vars" 2>&1 | tee -a ./setup.log
 
 source ~/.bashrc
 
