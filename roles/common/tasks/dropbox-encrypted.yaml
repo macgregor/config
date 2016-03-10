@@ -30,6 +30,8 @@
 
 - name: setup encfs does not properly mount, fix it
   command: fusermount -u {{dropbox_encfs_unencrypted_dir}}
+  register: out
+  failed_when: out.rc > 1
 
 - name: mount unencrypted dir
   shell: echo {{dropbox_encfs_password}} | encfs -S {{dropbox_encfs_encrypted_dir}} {{dropbox_encfs_unencrypted_dir}}
