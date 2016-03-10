@@ -1,4 +1,5 @@
 ---
+- include_vars: secret.yaml
 - include: bumblebee.yaml
 - include: chromium-touchpad-drivers.yaml
 - include: steam.yaml
