@@ -1,0 +1,10 @@
+---
+secrets_file: roles/lenovo/vars/secret.yaml
+user_email : mstratto@redhat.com
+github_username: macgregor
+gitpassport_installed: true
+powerline_installed: true
+install_dropbox: true
+dropbox_encfs_encrypted_dir: ~/Dropbox/encrypted
+dropbox_encfs_unencrypted_dir: ~/dropbox_unencrypted
+eclipse_install_dir: /opt

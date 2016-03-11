@@ -2,6 +2,11 @@
   hosts: local
   connection: local
   become_method: sudo
+  pre_tasks:
+    - include_vars: roles/beastop/vars/beastop.yaml
+      when: "{{ansible_fqdn.find('fedora.laptop') != -1}}"
+    - include_vars: roles/lenovo/vars/lenovo.yaml
+      when: "ansible_machine_id == 'e2aaa72fecf54406978476e6771575a0'"
   roles:
     - {role: dotfiles}
     - {role: lenovo, when: "ansible_machine_id == 'e2aaa72fecf54406978476e6771575a0'"}

@@ -2,7 +2,7 @@
   get_url: url={{eclipse_url}} dest=src/eclipse.tar.gz
 
 - name: extract eclipse
-  unarchive: src=src/eclipse.tar.gz dest=/usr/share creates=/usr/share/eclipse owner={{user}}
+  unarchive: src=src/eclipse.tar.gz dest={{eclipse_install_dir}} creates=/usr/share/eclipse owner={{user}}
 
 - name: add eclipse to bin
-  file: src=/usr/share/eclipse/eclipse dest=/usr/bin/eclipse state=link
+  file: src={{eclipse_install_dir}}/eclipse/eclipse dest=/usr/bin/eclipse state=link
