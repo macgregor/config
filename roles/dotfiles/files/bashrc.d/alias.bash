@@ -17,4 +17,4 @@ alias test_project="mvn test -fae"
 alias bat='pygmentize -g'
 alias eclipse='nohup $ECLIPSE_HOME/eclipse &>/dev/null &'
 alias unmount_dropbox_encrypted='fusermount -u $DROPBOX_ENCFS_UNENCRYPTED_DIR'
-alias mount_dropbox_encrypted='encfs --idle=15 $DROPBOX_ENCFS_ENCRYPTED_DIR $DROPBOX_ENCFS_UNENCRYPTED_DIR'
+alias mount_dropbox_encrypted='encfs $DROPBOX_ENCFS_ENCRYPTED_DIR $DROPBOX_ENCFS_UNENCRYPTED_DIR'

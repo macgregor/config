@@ -1,4 +1,3 @@
 user_home : "{{ansible_env.HOME}}"
 user : "{{ansible_env.USER}}"
 powerline_installed: "{{reg_powerline_installed.rc == 0}}"
-gitpassport_installed: "{{reg_gitpassport_installed.rc == 0}}"
