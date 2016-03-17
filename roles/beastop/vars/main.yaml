@@ -3,7 +3,6 @@ secrets_file: roles/beastop/vars/secret.yaml
 user_email : development@mmstratton.com
 bumblebee_url: http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee/fedora23/noarch/bumblebee-release-1.2-1.noarch.rpm
 bumblebee_nonfree_url: http://install.linux.ncsu.edu/pub/yum/itecs/public/bumblebee-nonfree/fedora23/noarch/bumblebee-nonfree-release-1.2-1.noarch.rpm
-gitpassport_installed: true
 powerline_installed: true
 install_dropbox: true
 dropbox_encfs_encrypted_dir: ~/Dropbox/encrypted

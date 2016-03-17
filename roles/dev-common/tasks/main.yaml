@@ -7,8 +7,6 @@
   when: install_pip
 - include: python3.yaml
   when: install_python3
-- include: gitpassport.yaml
-  when: install_gitpassport
 - include: java.yaml
   when: install_java
 - include: eclipse.yaml
