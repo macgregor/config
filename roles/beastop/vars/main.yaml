@@ -7,3 +7,5 @@ powerline_installed: true
 install_dropbox: true
 dropbox_encfs_encrypted_dir: ~/Dropbox/encrypted
 dropbox_encfs_unencrypted_dir: ~/dropbox_unencrypted
+install_atom: true
+install_python3: true

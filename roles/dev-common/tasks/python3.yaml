@@ -30,3 +30,12 @@
 - name: fix easy_install/python3
   command: python src/ez_setup.py
   become: yes
+
+- name: add aliases for python2 and 3
+  blockinfile:
+    dest: "{{user_home}}/.bashrc.d/alias.bash"
+    insertbefore: EOF
+    marker: "# {mark} ANSIBLE MANAGED PYTHON ALIASES"
+    block: |
+        alias use_python2='alternatives --set python /usr/bin/python2'
+        alias use_python3='alternatives --set python /usr/bin/python3'
