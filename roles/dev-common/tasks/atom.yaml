@@ -1,0 +1,9 @@
+- name: download atom
+  get_url: url=https://atom.io/download/rpm dest=/tmp/atom.rpm
+
+- name: install atom
+  dnf: name=/tmp/atom.rpm state=present
+  become: yes
+
+- name: install groovy syntax highlighting
+  command: apm install language-groovy
